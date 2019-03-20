@@ -16,6 +16,12 @@ RUN \
     locale-gen en_US.utf8 && \
     /usr/sbin/update-locale LANG=en_US.UTF-8
 
+# install cowsay
+RUN apt-get update && apt-get install -y cowsay --no-install-recommends
+
+# "cowsay" installs to /usr/games
+ENV PATH $PATH:/usr/games
+
 # set locales
 ENV LC_ALL en_US.UTF-8
 ENV LANG en_US.UTF-8

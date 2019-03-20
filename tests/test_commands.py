@@ -14,7 +14,7 @@ from toil_say import commands
 
 
 def test_run_toil(tmpdir):
-    message = "This is a test message for the Universe."
+    message = "Juno is great!"
     logfile = tmpdir.join("log.txt")
     jobstore = tmpdir.join("jobstore")
     total = 3
@@ -22,10 +22,13 @@ def test_run_toil(tmpdir):
     # define arguments
     args = [
         jobstore.strpath,
-        "--message", message,
-        "--total", str(total),
-        "--logFile", logfile.strpath,
-        ]
+        "--message",
+        message,
+        "--total",
+        str(total),
+        "--logFile",
+        logfile.strpath,
+    ]
 
     # get and validate options and call pipeline
     parser = commands.get_parser()
@@ -35,7 +38,7 @@ def test_run_toil(tmpdir):
 
     # assert custom message is echoed in master log
     with open(logfile.strpath) as f:
-        assert len(f.read().split(message)) == total + 1
+        assert len(f.read().split("Juno")) == total + 1
 
 
 def test_process_parsed_options(tmpdir):

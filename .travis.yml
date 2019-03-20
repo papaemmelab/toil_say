@@ -1,26 +1,21 @@
 language: python
-
 python:
-  - 2.7
-
+- 2.7
 services:
-  - docker
-
+- docker
 install:
-  - pip install -U codecov
-
+- pip install -U codecov
 script:
-  - bash test-container.sh
-
+- bash test-container.sh
 after_success:
-  - codecov
-
+- codecov
 deploy:
   provider: pypi
   distributions: sdist bdist_wheel
   skip_existing: true
   user: papaemmelab
-  password: <TO REPLACE THIS RUN `travis encrypt --add deploy.password`>
+  password:
+    secure: nhxT0kZL29yduC1SNi0mljR7jp0YXIszh1urnTMVknQ5Sho9U7vMHaml9q9soXeRXAxZNaGyCi8V+YQoEyoDIFQY15nA8dzGozn3/fpS6P8Qf9sjNmVd8OOSxjVYp6E/JFLaK8CJLCDF15RWcaUDTPRdLL4S8kBKsnZU2E5hS/pKe7/8sUB0yIYSe4VXoZ/ppjeXZv6USvWlD3bLGdQ6Ut7H5w1H1viRqB8xigRwRo43xTBDvSByJeyHjHDwUwX3dttUMME3zXopWm3U60zVre7rInZWlIk9PwD/SCXvVVC0n7rmuyhNgi83iN1057085fKsD/OiLi30rABCiPgBrkb9YDXn6uPK6jVAGJMVJQOYOQQ8yPijtj9jMsQDn9Zk+S+PdMXQ8vYI7namDugYOYZDyw7dn8i1K2WWZ/HRA63zkcIyuNFGHXKfMb+ADW6bTNbQqf3a0FJuE5xT+H2UmFo5zf72T5lewmvCwu2KkmrLmUqE5DpX7nT/qmG39MTATAb5IH7nyXOB5LwfwHnt76eOadbjJ8tnkrCNoZjTK7RhBGM+1DQ1a13b8t6jqUVGtlK2ExUSpCl5y55QcG3/dD5GWwesdB62arJS52h08asafGETa3BZdhQkD5RaQKbo+TfsKi9DNCbgn9MDX0doAagmdk4YYJl74L6EPFF/Lgo=
   on:
     tags: true
     repo: papaemmelab/toil_say

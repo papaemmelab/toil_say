@@ -9,7 +9,6 @@ from toil_say import __version__
 
 
 class Hello(ContainerJob):
-
     def run(self, fileStore):
         """
         Log value of `total` from the `options` attribute.
@@ -21,7 +20,6 @@ class Hello(ContainerJob):
 
 
 class HelloMessage(ContainerJob):
-
     def run(self, fileStore):
         """
         Run `echo` with docker, singularity or subprocess.
@@ -29,16 +27,15 @@ class HelloMessage(ContainerJob):
         Use `self.call` to run commands with docker, singularity or subprocess.
         Learn more here https://github.com/papaemmelab/toil_container.
         """
-        output = self.call(["echo", self.options.message], check_output=True)
-        fileStore.logToMaster(output)
+        output = self.call(["cowsay", self.options.message], check_output=True)
+        fileStore.logToMaster("\n\n" + output)
 
 
 def get_parser():
     """Get pipeline configuration using toil's."""
     parser = ContainerArgumentParser(
-        version=__version__,
-        description="A hello world toil pipeline.",
-        )
+        version=__version__, description="A hello world toil pipeline."
+    )
 
     settings = parser.add_argument_group("pipeline arguments")
 
@@ -47,7 +44,7 @@ def get_parser():
         help="a message to be echoed to the Universe",
         required=False,
         default="hello Universe, this text is used in the pipeline tests",
-        )
+    )
 
     settings.add_argument(
         "--total",
@@ -55,7 +52,7 @@ def get_parser():
         required=False,
         default=1,
         type=int,
-        )
+    )
 
     return parser
 
