@@ -70,8 +70,8 @@ def process_parsed_options(options):
 
 def run_toil(options):
     """Run toil pipeline give an options namespace."""
-    head = Hello(cores=1, memory="1G", options=options)
-    child = HelloMessage(cores=1, memory="1G", options=options)
+    head = Hello(cores=1, memory="1G", options=options, runtime=5)
+    child = HelloMessage(cores=1, memory="1G", options=options, runtime=5)
     head.addChild(child)
     ContainerJob.Runner.startToil(head, options)
 

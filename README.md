@@ -7,7 +7,20 @@
 [![docker badge][automated_badge]][docker_base]
 [![code formatting][black_badge]][black_base]
 
-🛰 A demo Toil pipeline for HPC's group meeting.
+🐄 A demo Toil pipeline for HPC's group meeting.
+
+Make a cow say something:
+
+    $ toil_say jobstore --message "Juno is great!"
+
+        ________________
+        < Juno is great! >
+        ----------------
+                \   ^__^
+                \  (oo)\_______
+                    (__)\       )\/\
+                        ||----w |
+                        ||     ||
 
 ## Usage
 
