@@ -1,0 +1,16 @@
+[paths]
+source =
+   toil_say
+   */toil_say
+
+[run]
+source =
+    toil_say
+
+omit =
+    *toil_say/__main__.py
+
+[report]
+exclude_lines =
+    pragma: no cover
+    if __name__ == .__main__.:
